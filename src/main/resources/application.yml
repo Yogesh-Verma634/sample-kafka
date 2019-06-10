@@ -1,0 +1,34 @@
+kafka:
+  consumer:
+    bootstrap-servers: localhost:9093
+    topic: TOPIC_NAME
+    groupId: test-group-id
+    concurrency: 1
+    security-protocol: SSL
+    auto-reset-config: earliest
+    poll-time: 100
+    ssl:
+      keystore:
+        path: certificate
+        password: CERTIFICATE_PASSWORD
+      key-password: CERTIFICATE_KEY_PASSWORD
+    max:
+      poll:
+        records: 100
+        interval: 1000
+      partition:
+        fetchBytes: 15000
+
+  producer:
+    bootstrap-servers: localhost:9093
+    acks: -1
+    batch-size: 102400
+    security-protocol: SSL
+    requestTimeout: 120000
+    retries-config: 3
+    ssl:
+      keystore:
+        path: CERTIFICATE_NAME
+        password: CERTIFICATE_PASSWORD
+      key-password: CERTIFICATE_KEY_PASSWORD
+
